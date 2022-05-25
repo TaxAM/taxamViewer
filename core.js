@@ -385,7 +385,7 @@ function graphicConstructor(sample, reads, pizzaSection, biggest){
                         </div>
                     </div>`
 
-        pizza.innerHTML += `<div id="${sample}-pizzaSlice${i}" onmouseover="changeColor('${sample}-${keys[i]}-label-color')" onmouseout="originalColor('${sample}-${keys[i]}-label-color')" class="hold slice"><div class="pizza"></div></div>`;
+        pizza.innerHTML += `<div id="${sample}-pizzaSlice${i}" title="${keys[i]}\n${truncNumber(part, 2)}%" onmouseover="changeColor('${sample}-${keys[i]}-label-color')" onmouseout="originalColor('${sample}-${keys[i]}-label-color')" class="hold slice"><div class="pizza"></div></div>`;
         // How much the slice need to rotate to fit in the graphic
         // Current Percentegem 360º + Last Slice Percentegem 360º - Current Slice Percentegem 360º
         rotate += 360 * (part / 1000 * 10) + (last - 360 * (part / 1000 * 10))/2
