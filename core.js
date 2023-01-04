@@ -89,7 +89,7 @@ function matrixConstructor(textFile){
     if (biggest <= 1 && biggest > 0){
         for(let i = 1; i < matrix.length; i++){
             for(let j = 1; j < matrix[i].length; j++){
-                matrix[i][j] = truncNumber(matrix[i][j], 2);
+                matrix[i][j] = truncNumber(matrix[i][j], 4);
                 if(!values.includes(matrix[i][j])){
                     values.push(matrix[i][j]);
                 }
@@ -370,7 +370,7 @@ function graphicConstructor(sample, reads, pizzaSection, biggest){
     for(let i = 0; i < testValues.length; i++){
         
         part = testValues[i] * 100 / sum;
-        let readValue = biggest <= 1 ? `${truncNumber(testValues[i] * 100, 2)}%` : testValues[i];
+        let readValue = biggest <= 1 ? `${truncNumber(testValues[i] * 100, 4)}%` : testValues[i];
         label += `<div class="pizza-label">
                         <div class="label-color" id="${sample}-${keys[i]}-label-color" onmouseover="changeColor('${sample}-pizzaSlice${i}')" onmouseout="originalColor('${sample}-pizzaSlice${i}')" style="background-color: ${colors[i]}">
                             ${readValue}
@@ -380,12 +380,12 @@ function graphicConstructor(sample, reads, pizzaSection, biggest){
                                 ${keys[i]}
                             </div>
                             <div class="slice-percet">
-                                ${truncNumber(part, 2)}%
+                                ${truncNumber(part, 4)}%
                             </div>
                         </div>
                     </div>`
 
-        pizza.innerHTML += `<div id="${sample}-pizzaSlice${i}" title="${keys[i]}\n${truncNumber(part, 2)}%" onmouseover="changeColor('${sample}-${keys[i]}-label-color')" onmouseout="originalColor('${sample}-${keys[i]}-label-color')" class="hold slice"><div class="pizza"></div></div>`;
+        pizza.innerHTML += `<div id="${sample}-pizzaSlice${i}" title="${keys[i]}\n${truncNumber(part, 4)}%" onmouseover="changeColor('${sample}-${keys[i]}-label-color')" onmouseout="originalColor('${sample}-${keys[i]}-label-color')" class="hold slice"><div class="pizza"></div></div>`;
         // How much the slice need to rotate to fit in the graphic
         // Current Percentegem 360º + Last Slice Percentegem 360º - Current Slice Percentegem 360º
         rotate += 360 * (part / 1000 * 10) + (last - 360 * (part / 1000 * 10))/2
